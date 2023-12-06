@@ -35,7 +35,6 @@ class B8ZS:
         violacao = '00000000'
         sinal = ''.join(str(i) for i in sinal_digital)
 
-        # é mais fácil obter a violação usando strings
         while violacao in sinal:
             i = sinal.index(violacao)
             if sinal[i - 1] == '1':

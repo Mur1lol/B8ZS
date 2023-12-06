@@ -8,8 +8,7 @@ class Client:
 
     def setup(self, host, port):
         self.host = host
-        if port != None:
-            self.port = port
+        self.port = port
 
     def connect(self):
         self.client_socket = socket.socket()

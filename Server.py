@@ -6,10 +6,9 @@ class Server:
         self.port = 3000
         self.conn =''
 
-    def setup(self, host, port = None):
+    def setup(self, host, port):
         self.host = host
-        if port != None:
-            self.port = port
+        self.port = port
 
     def connect(self):
         server_socket = socket.socket()

@@ -6,8 +6,7 @@ from Server import Server
 from Client import Client
 
 # Line Coding
-from Vegenere import Vegenere
-from Transposicao import Transposicao
+from CifraDeCesar import CifraDeCesar
 from B8ZS import B8ZS
 
 # Plotting
@@ -28,7 +27,7 @@ class SelectorWindow:
             pady=30,
             width=200)
 
-        self.ip_label = tk.Label(self.window, text='IP address:', background="#e6fff6", font=("poppins", 10))
+        self.ip_label = tk.Label(self.window, text='IP:', background="#e6fff6", font=("poppins", 10))
         self.ip_label.grid(row=0, column=0, sticky='w')
         self.ip_input = tk.Entry(self.window)
         self.ip_input.grid(row=0, column=1, sticky='w')
@@ -37,7 +36,7 @@ class SelectorWindow:
         self.ip_input.bind("<FocusOut>", lambda event: self.on_focus_out(event, "192.168.0.10"))
 
 
-        self.port_label = tk.Label(self.window, text='Port:', background="#e6fff6", font=("poppins", 10))
+        self.port_label = tk.Label(self.window, text='Porta:', background="#e6fff6", font=("poppins", 10))
         self.port_label.grid(row=1, column=0, sticky='w')
         self.port_input = tk.Entry(self.window)
         self.port_input.grid(row=1, column=1, sticky='w')
@@ -103,13 +102,10 @@ class MessageWindow:
         binary = self.b8.decode(signal)
 
         # crypto
-        #self.crypt.decodeVegenere(binary)
         self.binary_to_string = ''.join([str(item) for item in binary])
-        #self.vegenere = self.crypt.binary_to_string(self.binary_to_string)
-        #self.message = self.crypt.get_original_message(self.vegenere)
         
-        self.transposicao = self.crypt.binario_para_texto(self.binary_to_string)
-        self.message = self.crypt.decifrar(self.transposicao)
+        self.cesar = self.crypt.binario_para_texto(self.binary_to_string)
+        self.message = self.crypt.decifrar(self.cesar)
         
         #interface
         self.updateText()
@@ -121,8 +117,8 @@ class MessageWindow:
     def send_message(self):
         plt.close()
         self.message = self.message_input.get()
-        self.transposicao = self.crypt.cifrar(self.message)
-        binary_message = self.crypt.texto_para_binario(self.transposicao)
+        self.cesar = self.crypt.cifrar(self.message)
+        binary_message = self.crypt.texto_para_binario(self.cesar)
         self.binary_to_string = ''.join([str(item) for item in binary_message])
         self.sig = self.b8.encode(binary_message)
 
@@ -138,9 +134,9 @@ class MessageWindow:
 
     def updateText(self):
         if self.fun == 'host':
-             text = f"Signal: { self.sig }\nBinary: { self.binary_to_string } \nEncrypted Message: { self.transposicao }\nMessage: { self.message } "
+             text = f"Signal: { self.sig }\nBinary: { self.binary_to_string } \nEncrypted Message: { self.cesar }\nMessage: { self.message } "
         else:
-            text = f"Message: { self.message } \nEncrypted Message: { self.transposicao }\nBinary: { self.binary_to_string } \nSignal: { self.sig }"
+            text = f"Message: { self.message } \nEncrypted Message: { self.cesar }\nBinary: { self.binary_to_string } \nSignal: { self.sig }"
         self.message_data.delete("1.0","end")
         self.message_data.insert(tk.END, text)
 
@@ -156,7 +152,7 @@ class MessageWindow:
         self.info = ''
         self.fun = fun
 
-        self.crypt = Transposicao(3)
+        self.crypt = CifraDeCesar(3)
         self.b8 = B8ZS()
         
         # build ui
