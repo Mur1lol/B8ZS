@@ -27,4 +27,4 @@ Para executar o B8ZS, é necessário inserir nos terminais de cada uma das máqu
 $ py main.py
 ```
 
-* Lembrando que a `porta` e o `ip` tem que ser os mesmos no `host` e no `cliente`, e o `host` precisa ser conectado primeiro.
+* Lembrando que a `porta` e o `ip` tem que ser os mesmos no `host` e no `cliente`.
