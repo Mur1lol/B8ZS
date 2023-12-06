@@ -34,23 +34,23 @@ class CifraDeCesar:
     def binario_para_texto(binario):
         return ''.join(chr(int(binario[i:i+8], 2)) for i in range(0, len(binario), 8))
 
-# Exemplo de uso:
-texto_original = "Meu nome é Murilo e minha mãe é a Mônica"
-deslocamento_cesar = 3
+# # Exemplo de uso:
+# texto_original = "Meu nome é Murilo e minha mãe é a Mônica"
+# deslocamento_cesar = 3
 
-cesar_cipher = CifraDeCesar(deslocamento_cesar)
+# cesar_cipher = CifraDeCesar(deslocamento_cesar)
 
-# Criptografia
-texto_cifrado, texto_cifrado_binario = cesar_cipher.cifrar(texto_original)
-print(f"Texto Original: {texto_original}")
-print(f"Texto Criptografado: {texto_cifrado}")
-print(f"Texto Criptografado em Binário: {texto_cifrado_binario}")
+# # Criptografia
+# texto_cifrado, texto_cifrado_binario = cesar_cipher.cifrar(texto_original)
+# print(f"Texto Original: {texto_original}")
+# print(f"Texto Criptografado: {texto_cifrado}")
+# print(f"Texto Criptografado em Binário: {texto_cifrado_binario}")
 
-# Descriptografia
-texto_decifrado, texto_decifrado_binario = cesar_cipher.decifrar(texto_cifrado)
-print(f"Texto Descriptografado: {texto_decifrado}")
-print(f"Texto Descriptografado em Binário: {texto_decifrado_binario}")
+# # Descriptografia
+# texto_decifrado, texto_decifrado_binario = cesar_cipher.decifrar(texto_cifrado)
+# print(f"Texto Descriptografado: {texto_decifrado}")
+# print(f"Texto Descriptografado em Binário: {texto_decifrado_binario}")
 
-# Convertendo de binário para texto
-texto_decifrado_do_binario = cesar_cipher.binario_para_texto(texto_decifrado_binario)
-print(f"Texto Descriptografado do Binário: {texto_decifrado_do_binario}")
+# # Convertendo de binário para texto
+# texto_decifrado_do_binario = cesar_cipher.binario_para_texto(texto_decifrado_binario)
+# print(f"Texto Descriptografado do Binário: {texto_decifrado_do_binario}")

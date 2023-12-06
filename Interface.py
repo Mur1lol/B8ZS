@@ -4,6 +4,7 @@ from tkinter.scrolledtext import ScrolledText
 # Connection
 from Server import Server
 from Client import Client
+from getIP import IP
 
 # Line Coding
 from CifraDeCesar import CifraDeCesar
@@ -31,9 +32,9 @@ class SelectorWindow:
         self.ip_label.grid(row=0, column=0, sticky='w')
         self.ip_input = tk.Entry(self.window)
         self.ip_input.grid(row=0, column=1, sticky='w')
-        self.ip_input.insert(0, '192.168.0.10')  # Adiciona um texto inicial
-        self.ip_input.bind("<FocusIn>", lambda event: self.on_entry_click(event, "192.168.0.10"))
-        self.ip_input.bind("<FocusOut>", lambda event: self.on_focus_out(event, "192.168.0.10"))
+        self.ip_input.insert(0, IP.get_local_ip())  # Adiciona um texto inicial
+        #self.ip_input.bind("<FocusIn>", lambda event: self.on_entry_click(event, IP.get_local_ip()))
+        #self.ip_input.bind("<FocusOut>", lambda event: self.on_focus_out(event, IP.get_local_ip()))
 
 
         self.port_label = tk.Label(self.window, text='Porta:', background="#e6fff6", font=("poppins", 10))
