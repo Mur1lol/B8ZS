@@ -5,11 +5,11 @@ class CifraDeCesar:
 
     def cifrar(self, texto):
         texto_cifrado = self.deslocar_texto(texto, self.deslocamento)
-        return texto_cifrado, self.texto_para_binario(texto_cifrado)
+        return texto_cifrado
 
     def decifrar(self, texto_cifrado):
         texto_decifrado = self.deslocar_texto(texto_cifrado, -self.deslocamento)
-        return texto_decifrado, self.texto_para_binario(texto_decifrado)
+        return texto_decifrado
 
     def deslocar_texto(self, texto, deslocamento):
         texto_deslocado = ''

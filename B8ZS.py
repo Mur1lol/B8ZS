@@ -18,7 +18,7 @@ class B8ZS:
         up = True
         sinal_digital = []
         for bit in bits:
-            if bit == 1:
+            if bit == '1':
                 if up:
                     sinal_digital.append(1)
                 else:

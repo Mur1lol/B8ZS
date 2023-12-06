@@ -96,11 +96,15 @@ class MessageWindow:
         plt.close()
         # connection
         signal = self.server.receive_message()
+        
+        print(F'SIGNAL: ', signal)
 
         # line coding
         signal = self.b8.string_to_signal(signal)
         self.sig = signal
         binary = self.b8.decode(signal)
+        
+        
 
         # crypto
         self.binary_to_string = ''.join([str(item) for item in binary])
